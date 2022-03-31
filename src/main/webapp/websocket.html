@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Projeto de josedoce</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style type="text/css">
+	  body { 
+	    background-color: #303030;
+	    color: #ffffff;
+	  }
+    </style>
+  </head>
+  <body>
+  
+  	<div class="container">
+  		<div class="row d-flex align-items-center flex-column">
+  			<div class="col-10 col-md-6 mt-5">
+  				<h2>Suporte online</h2>
+  			</div>
+  		
+  		</div>
+  		
+         <form class="row d-flex align-items-center flex-column">
+        	<div class="col-10 col-md-6 mb-2">
+        		<label for="username" class="form-label mb-0">Entrar como:</label>
+    			<input class="form-control form-control-sm" id="username" type="text" placeholder="fulano"/>
+        	</div>
+        	<div class="col-10 col-md-6 mb-2">
+ 				<div class="row">
+ 					<div class="col-6">
+ 						<input onclick="connect();" class="btn btn-sm btn-success w-100" type="button" value="conectar">
+ 					</div>
+ 					<div class="col-6">
+        				<input onclick="disconnect();" class="btn btn-sm btn-danger w-100" type="button" value="desconectar">
+ 					</div>
+ 				</div>
+        	</div>
+        	<div class="col-10 col-md-6">
+        		<textarea readonly="true" id="log" class="form-control form-control-sm" rows="10" cols="70"></textarea>
+        	</div>
+        	<div class="col-10 col-md-6 mb-2">
+        		<label for="msg" class="form-label mt-1 mb-0">escreva sua mensagem:</label>
+    			<input autocomplete="off" class="form-control form-control-sm" id="msg" type="text" placeholder="mensagem"/>
+        	</div>
+        	
+  			<div class="col-6 col-md-4 mt-3">
+    			<input onclick="send();" class="btn btn-sm btn-success w-100" type="button" value="enviar"/>  
+  			</div>
+    		
+   	 </form>  
+  	
+  	</div>
+     <script type="text/javascript">
+	     let ws;
+		 function verifyConnetion(){
+			 if(!ws){
+				 alert('É necessário se conecatar com o suporte.');
+			 	return false;
+			 }
+			 return true;
+		 }
+		 
+	     function connect() {
+	         let username = document.getElementById("username").value;
+	         
+	         let host = document.location.host;
+	         let pathname = document.location.pathname.replace('websocket.html', '');
+	        
+	         
+	         ws = new WebSocket("ws://" +host  + pathname + "chat/" + username);
+		
+	         ws.onmessage = function(event) {
+	        	 console.log(event)
+	         	 let log = document.getElementById("log");
+	             console.log(event.data);
+	             let message = JSON.parse(event.data);
+	             log.innerHTML += message.from + " : " + message.content + "\n";
+	         };
+	     }
+		 function disconnect() {
+			 if(!verifyConnetion()){
+		    	return; 
+		   	 }
+			 ws.close();
+			 ws = undefined;
+		 }
+		 
+	     function send() {
+	    	 if(!verifyConnetion()){
+	    		return; 
+	    	 }
+	         let content = document.getElementById("msg");
+	         let json = JSON.stringify({
+	             "content":content.value
+	         });
+	
+	         ws.send(json);
+	         content.value = '';
+	     }
+     </script>
+  </body>
+</html>

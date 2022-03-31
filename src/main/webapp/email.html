@@ -15,14 +15,19 @@
   </head>
   <body>
   	<div class="container">
-  		<h2>Email</h2>
+  		<div class="row d-flex align-items-center flex-column">
+  			<div class="col-6">
+  				<h2>Email</h2>
+  			</div>
+  		
+  		</div>
   		
          <form action="EnvioDeEmailServlet" method="post" class="row d-flex align-items-center flex-column">
-        	<div class="col-6">
+        	<div class="col-6 mb-3">
         		<label for="to" class="form-label">Para:</label>
     			<input class="form-control form-control-sm" id="to" type="text" name="to" placeholder="fulano"/>
         	</div>
-        	<div class="col-6">
+        	<div class="col-6 mb-3" >
         		<label for="subject">Assunto:</label>
         		<input class="form-control form-control-sm" id="subject" type="text" name="subject" placeholder="fulano casou-se">
         	</div>
