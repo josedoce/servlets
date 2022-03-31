@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Projeto de josedoce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style type="text/css">
+	  body { 
+	    background-color: #303030;
+	    color: #ffffff;
+	  }
+    </style>
+  </head>
+  <body>
+     <form action="EnvioDeArquivoServlet" method="POST" enctype="multipart/form-data">
+     	<input type="file" name="fileUpload"/> 
+     	<input type="submit" value="enviar"/>
+     </form>
+     	<h2>arquivos enviados</h2>
+     	<img alt="print screen" src="http://localhost:8080/Estudos/EnvioDeArquivoServlet" width="800px">
+  		<a href="DownloadDeArquivoServlet">download image</a>
+  </body>
+</html>

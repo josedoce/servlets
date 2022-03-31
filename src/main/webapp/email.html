@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Projeto de josedoce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style type="text/css">
+	  body { 
+	    background-color: #303030;
+	    color: #ffffff;
+	  }
+    </style>
+  </head>
+  <body>
+  	<div class="container">
+  		<h2>Email</h2>
+  		
+         <form action="EnvioDeEmailServlet" method="post" class="row d-flex align-items-center flex-column">
+        	<div class="col-6">
+        		<label for="to" class="form-label">Para:</label>
+    			<input class="form-control form-control-sm" id="to" type="text" name="to" placeholder="fulano"/>
+        	</div>
+        	<div class="col-6">
+        		<label for="subject">Assunto:</label>
+        		<input class="form-control form-control-sm" id="subject" type="text" name="subject" placeholder="fulano casou-se">
+        	</div>
+        	<div class="col-6">
+        		<label for="msg">Mensagem:</label>
+        		<textarea id="msg" class="form-control form-control-sm" rows="10" cols="70" name="msg"></textarea>
+        	</div>
+  			<div class="col-4 mt-3">
+    			<input class="btn btn-sm btn-success w-100" type="submit" value="send"/>  
+  			</div>
+    		
+   	 </form>  
+  	
+  	</div>
+  </body>
+</html>
