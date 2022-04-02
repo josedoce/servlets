@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="5.0">
   <display-name>Estudos</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -222,9 +222,9 @@
     <servlet-class>app.inputstream.EnvioDeArquivoServlet</servlet-class>
     <multipart-config>
       <location>/home/josedoce/Pictures/estudos</location>
-      <max-file-size>10485760</max-file-size>
-      <max-request-size>104857600</max-request-size>
-      <file-size-threshold>1048576</file-size-threshold>
+      <max-file-size>524288000</max-file-size>
+      <max-request-size>1073741824</max-request-size>
+      <file-size-threshold>2097152</file-size-threshold>
     </multipart-config>
   </servlet>
   <servlet-mapping>
@@ -261,5 +261,34 @@
     <servlet-name>CriandoPdfServlet</servlet-name>
     <url-pattern>/CriandoPdfServlet</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>WebsocketServlet</display-name>
+    <servlet-name>WebsocketServlet</servlet-name>
+    <servlet-class>app.websocket.WebsocketServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WebsocketServlet</servlet-name>
+    <url-pattern>/WebsocketServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VideoServlet</display-name>
+    <servlet-name>VideoServlet</servlet-name>
+    <servlet-class>app.inputstream.VideoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VideoServlet</servlet-name>
+    <url-pattern>/VideoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ImagemServlet</display-name>
+    <servlet-name>ImagemServlet</servlet-name>
+    <servlet-class>app.inputstream.ImagemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImagemServlet</servlet-name>
+    <url-pattern>/ImagemServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

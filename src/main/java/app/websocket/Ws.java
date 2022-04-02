@@ -41,7 +41,9 @@ public class Ws {
 	
 	@OnOpen
 	public void onOpen(Session session, @PathParam("username") String username) throws IOException {
+		
 		System.out.println("conexão ws estabelecida");
+		
 		//pega a sessão e conexão websocket 
 		this.session = session;
 		wss.add(this); //adicionamos a instancia contendo os dados de conexão do usuário.

@@ -12,14 +12,39 @@
 	    color: #ffffff;
 	  }
     </style>
+    <style>
+.action-icon{padding:5px;cursor:pointer;color:#fff}
+.table{font-size:11px;}
+.table>tbody>tr>td{padding: 2px 6px;vertical-align: middle;border:none;}
+#main-container{padding: 0px 20px 40px; width: 50%;margin:auto;}
+#upload-status-container{display:none;}
+#upload-header{height:35px;width:100%;background-color: #323254;color: #fff;padding: 8px;border-top-left-radius: 10px;border-top-right-radius: 10px;}
+#progress-bar-container{padding:20px;max-height:260px;overflow-y:auto;border:1px solid #323254;}
+::-webkit-scrollbar {background-color: #fff; width: 8px; height: 8px;}
+::-webkit-scrollbar-thumb {background-color: #C0C0C0; border-radius: 10px;}
+</style>
   </head>
   <body>
-     <form action="EnvioDeArquivoServlet" method="POST" enctype="multipart/form-data">
-     	<input type="file" name="fileUpload"/> 
-     	<input type="submit" value="enviar"/>
-     </form>
-     	<h2>arquivos enviados</h2>
-     	<img alt="print screen" src="http://localhost:8080/Estudos/EnvioDeArquivoServlet" width="800px">
-  		<a href="DownloadDeArquivoServlet">download image</a>
+  	<div id="main-container">
+        <h3 class="text-info">Envie seu arquivo(video.mp4 ou imagem.jpg)</h3>
+        <a href="galery.html" class="btn btn-sm btn-info">galeria de arquivos</a>
+        <hr>
+        <div style="margin-bottom: 20px">
+            <input type="file" id="files" multiple style="margin-bottom: 20px" />
+            <button class="btn btn-primary" type="button" onclick="startUploading()" ><i class="fa fa-upload"></i> Enviar arquivo</button>
+        </div>
+        <div id="upload-status-container">
+            <div id="upload-header">
+                <span id="upload-header-text"></span>
+                <i class="action-icon fa fa-window-minimize pull-right" onclick="showHide(this)" title="minimize"></i>
+            </div>
+            <div id="progress-bar-container">
+                <table class="table">
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/files.js"></script>
   </body>
 </html>
